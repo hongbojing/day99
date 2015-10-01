@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day #</title>
+    <link rel="stylesheet" href="css/myStyle.css">
+    <link rel="stylesheet" href="css/anotherstyle.css">
+    <style>
+        .studentRec {
+            border: 1px solid #777;
+            margin: 4px;
+            padding: 4px;
+            font-size: 14px;
+            background: #cccccc;
+        }
+        .passingStudent {
+            background: lightgreen;
+        }
+        .failingStudent {
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+<script src="js/lib/underscore.js"></script>
+<script src="SampleData.js"></script>
+<script>
+function appendTemplateData(dataString) {
+    var container = document.getElementById("container");
+    container.innerHTML = container.innerHTML + dataString;
+}
+var templateString = "<div><h1>Name: <%= lastname %></h1></div>";
+var templateString2 = "<div><h1>Name: <% print(lastname.toUpperCase()) %></h1></div>";
+
+window.addEventListener("load", function (e) {
+//    var compiledTemplate = _.template(templateString);
+    var compiledTemplate = _.template(templateString2);
+    var result = compiledTemplate({
+        lastname: "Hossenfeffer"
+    });
+    appendTemplateData(result);
+});
+</script>
+</body>
+</html>
